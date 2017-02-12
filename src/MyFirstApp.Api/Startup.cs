@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MyFirstApp.Infra.CrossCutting.IoC;
 
 namespace MyFirstApp.Api
 {
@@ -40,10 +41,9 @@ namespace MyFirstApp.Api
             app.UseMvc();
         }
 
-
         private static void RegisterServices(IServiceCollection services)
-        {            
-            //SimpleInjectorBootStrapper.RegisterServices(services);
+        {                        
+            Bootstrapper.RegisterServices(services);
         }
 
     }
