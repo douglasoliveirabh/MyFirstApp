@@ -3,11 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MyFirstApp.Infra.Data.Mappings;
 using MyFirstApp.Infra.Data.Extensions;
+using MyFirstApp.Domain.Models;
 
 namespace MyFirstApp.Infra.Data.Context
 {
     public class MyFirstAppContext : DbContext
     {
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,7 +31,7 @@ namespace MyFirstApp.Infra.Data.Context
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            optionsBuilder.UseSqlite("Filename=./MyFirstApp.db");            
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));            
            
         } 
         

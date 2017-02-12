@@ -1,0 +1,22 @@
+{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "MyFirstApp.Infra.CrossCutting.IoC" : "1.0.0-*",
+        "Microsoft.NETCore.App": {
+            "version": "1.1.0",
+            "type": "platform"
+        },
+        "Microsoft.AspNetCore": "1.0.3",
+        "Microsoft.AspNetCore.Mvc": "1.0.2",
+        "Microsoft.Extensions.Logging.Debug": "1.0.1"
+    },
+    "frameworks": {
+        "netcoreapp1.0": {
+            "imports": []
+        }
+    },
+    "buildOptions": {
+        "warningsAsErrors": true,
+        "emitEntryPoint": true
+    }
+}
