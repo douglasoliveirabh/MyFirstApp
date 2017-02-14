@@ -1,0 +1,10 @@
+Entity Framework Commands 
+    - Migrations 
+        - Create
+            dotnet ef --startup-project ..\MyFirstApp.Api\ migrations add "Migration Name"
+            
+        - Delete
+            dotnet ef --startup-project ..\MyFirstApp.Api\ migrations remove "Migration Name"
+
+    -Update Database
+        - dotnet ef --startup-project ..\MyFirstApp.Api\ database update
