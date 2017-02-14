@@ -30,6 +30,7 @@ namespace MyFirstApp.Api
         {
             // Add framework services.
             services.AddMvc();
+            RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
