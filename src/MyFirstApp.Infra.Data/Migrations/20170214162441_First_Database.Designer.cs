@@ -8,8 +8,8 @@ using MyFirstApp.Infra.Data.Context;
 namespace MyFirstApp.Infra.Data.Migrations
 {
     [DbContext(typeof(MyFirstAppContext))]
-    [Migration("20170214133334_First Database Version")]
-    partial class FirstDatabaseVersion
+    [Migration("20170214162441_First_Database")]
+    partial class First_Database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,10 @@ namespace MyFirstApp.Infra.Data.Migrations
                     b.Property<long>("GroupId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<long?>("PermissionId");
 
@@ -42,11 +45,17 @@ namespace MyFirstApp.Infra.Data.Migrations
                     b.Property<long>("PermissionId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ConstantName");
+                    b.Property<string>("ConstantName")
+                        .IsRequired()
+                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<long?>("GroupId");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("PermissionId");
 
@@ -60,13 +69,21 @@ namespace MyFirstApp.Infra.Data.Migrations
                     b.Property<long>("UserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<long?>("GroupId");
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(20);
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("UserId");
 

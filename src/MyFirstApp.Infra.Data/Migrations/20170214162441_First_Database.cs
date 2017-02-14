@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MyFirstApp.Infra.Data.Migrations
 {
-    public partial class FirstDatabaseVersion : Migration
+    public partial class First_Database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,9 +15,9 @@ namespace MyFirstApp.Infra.Data.Migrations
                 {
                     PermissionId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ConstantName = table.Column<string>(nullable: true),
+                    ConstantName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     GroupId = table.Column<long>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Title = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,10 +30,10 @@ namespace MyFirstApp.Infra.Data.Migrations
                 {
                     UserId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Email = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
                     GroupId = table.Column<long>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    Username = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +46,7 @@ namespace MyFirstApp.Infra.Data.Migrations
                 {
                     GroupId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     PermissionId = table.Column<long>(nullable: true),
                     UserId = table.Column<long>(nullable: true)
                 },
