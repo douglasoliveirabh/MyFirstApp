@@ -26,17 +26,22 @@ namespace MyFirstApp.Infra.Data.Migrations
                         .HasColumnType("varchar(30)")
                         .HasMaxLength(30);
 
-                    b.Property<long?>("PermissionId");
-
-                    b.Property<long?>("UserId");
-
                     b.HasKey("GroupId");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("MyFirstApp.Domain.Models.GroupPermission", b =>
+                {
+                    b.Property<long>("GroupId");
+
+                    b.Property<long>("PermissionId");
+
+                    b.HasKey("GroupId", "PermissionId");
 
                     b.HasIndex("PermissionId");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Groups");
+                    b.ToTable("GroupPermission");
                 });
 
             modelBuilder.Entity("MyFirstApp.Domain.Models.Permission", b =>
@@ -49,16 +54,12 @@ namespace MyFirstApp.Infra.Data.Migrations
                         .HasColumnType("varchar(30)")
                         .HasMaxLength(30);
 
-                    b.Property<long?>("GroupId");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("PermissionId");
-
-                    b.HasIndex("GroupId");
 
                     b.ToTable("Permissions");
                 });
@@ -72,8 +73,6 @@ namespace MyFirstApp.Infra.Data.Migrations
                         .HasColumnType("varchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<long?>("GroupId");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("varchar(20)")
@@ -86,34 +85,46 @@ namespace MyFirstApp.Infra.Data.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("GroupId");
-
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MyFirstApp.Domain.Models.Group", b =>
+            modelBuilder.Entity("MyFirstApp.Domain.Models.UserGroup", b =>
                 {
-                    b.HasOne("MyFirstApp.Domain.Models.Permission")
-                        .WithMany("Groups")
-                        .HasForeignKey("PermissionId");
+                    b.Property<long>("GroupId");
 
-                    b.HasOne("MyFirstApp.Domain.Models.User")
-                        .WithMany("Groups")
-                        .HasForeignKey("UserId");
+                    b.Property<long>("UserId");
+
+                    b.HasKey("GroupId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserGroup");
                 });
 
-            modelBuilder.Entity("MyFirstApp.Domain.Models.Permission", b =>
+            modelBuilder.Entity("MyFirstApp.Domain.Models.GroupPermission", b =>
                 {
-                    b.HasOne("MyFirstApp.Domain.Models.Group")
+                    b.HasOne("MyFirstApp.Domain.Models.Group", "Group")
                         .WithMany("Permissions")
-                        .HasForeignKey("GroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MyFirstApp.Domain.Models.Permission", "Permission")
+                        .WithMany("Groups")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyFirstApp.Domain.Models.User", b =>
+            modelBuilder.Entity("MyFirstApp.Domain.Models.UserGroup", b =>
                 {
-                    b.HasOne("MyFirstApp.Domain.Models.Group")
+                    b.HasOne("MyFirstApp.Domain.Models.Group", "Group")
                         .WithMany("Users")
-                        .HasForeignKey("GroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MyFirstApp.Domain.Models.User", "User")
+                        .WithMany("Groups")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

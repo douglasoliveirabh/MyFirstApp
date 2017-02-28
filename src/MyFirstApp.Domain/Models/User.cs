@@ -8,14 +8,14 @@ namespace MyFirstApp.Domain.Models
         public string Username { get; private set; }   
         public string Password { get; private set; }       
         public string Email { get; private set; } 
-        public IEnumerable<Group> Groups {get; private set;}
+        public IEnumerable<UserGroup> Groups {get; private set;}
 
         public User()
         {
-            this.Groups = new List<Group>();
+            this.Groups = new List<UserGroup>();
         }
 
-        public User(long userId, string username, string password, string email, IEnumerable<Group> groups)
+        public User(long userId, string username, string password, string email, IEnumerable<UserGroup> groups)
         {
             this.Groups = groups;
             this.Username = username;

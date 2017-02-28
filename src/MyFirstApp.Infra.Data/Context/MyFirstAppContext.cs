@@ -14,11 +14,17 @@ namespace MyFirstApp.Infra.Data.Context
         public DbSet<Group> Groups { get; set; }
         public DbSet<Permission> Permissions { get; set; }
 
+         //public DbSet<GroupPermission> GroupPermissions { get; set; }
+         
+         //public DbSet<UserGroup> UserGroups { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AddConfiguration(new UserMap());
             modelBuilder.AddConfiguration(new GroupMap());
             modelBuilder.AddConfiguration(new PermissionMap());
+            modelBuilder.AddConfiguration(new UserGroupMap());
+            modelBuilder.AddConfiguration(new GroupPermissionMap());
 
             base.OnModelCreating(modelBuilder);
         }

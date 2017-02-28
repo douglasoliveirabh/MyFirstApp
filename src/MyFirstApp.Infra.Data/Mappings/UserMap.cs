@@ -10,9 +10,9 @@ namespace MyFirstApp.Infra.Data.Mappings
     {
         public override void Map(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(u => u.UserId);
+            builder.ToTable("Users");
 
-            builder.HasMany(u => u.Groups); 
+            builder.HasKey(u => u.UserId);
 
             builder.Property(u => u.Email)
                 .HasColumnType("varchar(100)")

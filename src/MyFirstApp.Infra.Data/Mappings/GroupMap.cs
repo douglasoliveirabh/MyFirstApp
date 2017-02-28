@@ -5,19 +5,21 @@ using MyFirstApp.Infra.Data.Extensions;
 
 
 namespace MyFirstApp.Infra.Data.Mappings
-{    
+{
     public class GroupMap : EntityTypeConfiguration<Group>
     {
         public override void Map(EntityTypeBuilder<Group> builder)
         {
-            builder.HasKey(g => g.GroupId);                
-            builder.HasMany(g => g.Users);
-            builder.HasMany(g => g.Permissions);       
+            builder.ToTable("Groups");
 
-             builder.Property(g => g.Name)       
-                    .HasColumnType("varchar(30)")
-                    .HasMaxLength(30)
-                    .IsRequired();     
+            builder
+                .HasKey(g => g.GroupId);
+
+            builder
+                .Property(g => g.Name)
+                .HasColumnType("varchar(30)")
+                .HasMaxLength(30)
+                .IsRequired();
         }
     }
 }

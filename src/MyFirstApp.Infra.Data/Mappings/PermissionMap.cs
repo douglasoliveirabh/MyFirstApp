@@ -10,9 +10,10 @@ namespace MyFirstApp.Infra.Data.Mappings
     {
         public override void Map(EntityTypeBuilder<Permission> builder)
         {
-            builder.HasKey(g => g.PermissionId);                
-            builder.HasMany(g => g.Groups); 
+            builder.ToTable("Permissions");
 
+            builder.HasKey(g => g.PermissionId);                
+            
             builder.Property(g => g.ConstantName)       
                    .HasColumnType("varchar(30)")
                    .HasMaxLength(30)
