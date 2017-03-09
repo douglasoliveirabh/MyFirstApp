@@ -12,7 +12,8 @@ namespace MyFirstApp.Infra.Data.Repository
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
        
-         protected MyFirstAppContext Db;
+        protected MyFirstAppContext Db;
+        
         protected DbSet<TEntity> DbSet;
 
         public RepositoryBase(MyFirstAppContext context)
