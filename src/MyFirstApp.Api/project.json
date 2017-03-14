@@ -1,7 +1,9 @@
 {
     "version": "1.0.0-*",
     "dependencies": {
-        "MyFirstApp.Infra.CrossCutting.IoC": "1.0.0-*",
+        "MyFirstApp.Infra.CrossCutting.IoC": {
+            "target": "project"
+        },
         "Microsoft.NETCore.App": {
             "version": "1.1.0",
             "type": "platform"
@@ -24,5 +26,13 @@
     },
     "tools": {
         "Microsoft.EntityFrameworkCore.Tools.DotNet": "1.1.0-preview4-final"
+    },
+    "Logging": {
+        "IncludeScopes": false,
+        "LogLevel": {
+            "Default": "Debug",
+            "System": "Information",
+            "Microsoft": "Information"
+        }
     }
 }

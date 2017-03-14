@@ -15,6 +15,11 @@ namespace MyFirstApp.Domain.Models
             this.Users = new List<UserGroup>();
         }
 
+        public Group(string name) : base()
+        {
+            this.Name = name;
+        }
+
         public Group(long groupId, string name, IEnumerable<GroupPermission> permissions)
         {
             this.GroupId = groupId;

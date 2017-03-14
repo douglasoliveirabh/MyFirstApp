@@ -1,18 +1,19 @@
 {
   "version": "1.0.0-*",
-
-  "dependencies": {    
-    "MyFirstApp.Domain": "1.0.0-*",
-    "MyFirstApp.Infra.Data": "1.0.0-*",
+  "dependencies": {
+    "MyFirstApp.Domain" : {
+      "target": "project"
+    },
+    "MyFirstApp.Infra.Data" : {
+      "target": "project"
+    },
     "NETStandard.Library": "1.6.1",
     "System.ComponentModel.Annotations": "4.3.0",
     "System.ComponentModel.Primitives": "4.3.0"
   },
-
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
   }
 }
-
