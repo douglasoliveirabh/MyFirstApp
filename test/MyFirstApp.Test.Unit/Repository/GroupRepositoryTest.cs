@@ -4,11 +4,12 @@ using MyFirstApp.Infra.Data.Context;
 using MyFirstApp.Infra.Data.Repository;
 using Xunit;
 using System.Linq;
+using System;
 
 namespace MyFirstApp.Test.Unit.Repository
 {
     // see example explanation on xUnit.net website:
-    // https://xunit.github.io/docs/getting-started-dotnet-core.html
+    // https://xunit.github.io/docs/getting-started-dotnet-core.html    
     public class GroupRepositoryTest
     {
         private GroupRepository Repository;
@@ -20,7 +21,6 @@ namespace MyFirstApp.Test.Unit.Repository
             var options = new DbContextOptionsBuilder<MyFirstAppContext>()
                 .UseInMemoryDatabase(databaseName: "MyFirstAppDatabaseTest")
                 .Options;
-
 
             var context = new MyFirstAppContext(); //new MyFirstAppContext(options);
             context.Database.Migrate();
@@ -36,6 +36,8 @@ namespace MyFirstApp.Test.Unit.Repository
             this.Repository.Commit();
 
             var groups = this.Repository.GetAll().ToList();
+
+            Console.WriteLine("number of groups: " + groups.Count().ToString());
 
             Assert.Equal(groups.Count(), 1);
 
