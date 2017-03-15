@@ -6,7 +6,7 @@ using Xunit;
 using System.Linq;
 using System;
 
-namespace MyFirstApp.Test.Unit.Repository
+namespace MyFirstApp.Test.Unit.Tests.Repository
 {
     // see example explanation on xUnit.net website:
     // https://xunit.github.io/docs/getting-started-dotnet-core.html    
